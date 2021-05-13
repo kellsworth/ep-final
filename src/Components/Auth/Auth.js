@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import './App.css';
-// import Routes from "./routes";
-// import { Link } from 'react-router-dom';
-// // import axios from 'axios';
-// import { withRouter } from 'react-router'
+import './Auth.css';
+import Routes from "./routes";
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { withRouter } from 'react-router'
 
 
 function App(props) {
@@ -17,7 +17,6 @@ function App(props) {
     axios.post('/api/auth/logout')
       .then(_ => {
         props.history.push('/')
-        // this.props.logout()
       })
       .catch(err => console.log(err))
   }
@@ -39,10 +38,10 @@ function App(props) {
           </div>
           <div className= {toggle ? "navbar-links display" : "navbar-links"}>
             <ul>
-              <Link to="/Shop">
+              <Link to="/shop">
               <li><a id="links">Shop</a></li>
               </Link>
-              <Link to="/contact">
+              <Link to="/Contact">
                 <li><a id="links">Contact</a></li>
               </Link>
               <Link to="/home">
@@ -58,7 +57,7 @@ function App(props) {
       </header>
 
       <main>
-        {/* {Routes} */}
+        {Routes}
       </main>
       <footer class="footer"><p>2021 Etchit Pro | Karen Ellsworth</p></footer>
     </div>
