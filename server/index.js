@@ -36,12 +36,11 @@ app.post('/api/auth/login', userCtrl.login);
 app.post('/api/auth/logout', userCtrl.logout);
 app.post('/api/email', ctrl.email)
 
-// // Bucket Endpoints
-// app.post('/api/bucket', bucketCtrl.addToBucket);
-// app.post('/api/moments', bucketCtrl.addToMoments);
-// app.get('/api/bucket', bucketCtrl.getBucket);
-// app.put('/api/bucket/:itemId', bucketCtrl.toggleCompleted);
-// app.delete('/api/bucket/:itemId', bucketCtrl.deleteBucket);
+// // Cart Endpoints
+// app.post('/api/
+// app.get('/api/
+// app.put('/api/
+// app.delete('/api
 app.get('*', (req, res) => {
    res.sendFile(path.join(__dirname, '../build/index.html'))
 });

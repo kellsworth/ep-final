@@ -26,7 +26,7 @@ CREATE TABLE products (
   id SERIAL PRIMARY KEY, 
   product_name VARCHAR(255),
   material VARCHAR(255),
-  price INTEGER(255),
+  price MONEY,
   image VARCHAR(255),
   inventory INTEGER
 );
