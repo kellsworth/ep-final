@@ -1,0 +1,109 @@
+/* Auth (Home) pg */
+.auth {
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.3) 0%,
+      rgba(0, 0, 0, 0.7) 75%,
+      #000000 100%
+    ),
+    url("https://unsplash.com/collections/4724145/glass-%2F-light-%2F-texture");
+  height: calc(100vh - 75px);
+  width: 100vw;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-container {
+  border-radius: 8px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.35);
+  background-color: rgb(165, 179, 167);
+  width: 40vw;
+  height: 35vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px;
+  position: relative;
+}
+
+/* title logo */
+.auth-title {
+  height: 90px;
+  width: 30px;
+  margin-right: 430px;
+}
+
+.auth-error-msg {
+  position: absolute;
+  top: 55%;
+  height: 40px;
+  background-color: white;
+  color: #403d39;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.auth-error-msg > span {
+  cursor: pointer;
+  margin-left: 10px;
+  color: #ff7a6e;
+}
+
+/* username */
+.auth-input-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35%;
+}
+/* password */
+.auth-input-box > input {
+  height: 35px;
+  margin-left: 10px;
+  border: none;
+  color: black;
+  border-radius: 10px;
+}
+
+/* border of input field highlights */
+.auth-input-box > input:focus {
+  outline-color: #ff9770;
+  outline-width: 5px;
+}
+
+/* login and register buttons */
+.auth-button-container {
+  height: 25px;
+  width: 150px;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 30px;
+  /* width: 25%; */
+}
+
+.dark-button {
+  color: black;
+}
+
+@media (max-width: 400px) {
+  .auth-container {
+    width: 100vw;
+    background-image: none;
+    box-shadow: none;
+  }
+  .auth-button-container {
+    width: 100%;
+  }
+
+  .auth-title .logo {
+    height: 50px;
+    /* width: 30px; */
+    width: 30vw;
+  }
+}

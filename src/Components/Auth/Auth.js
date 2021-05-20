@@ -1,67 +1,72 @@
-import { useState } from 'react';
-import './Auth.css';
-import Routes from "./routes";
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import axios from 'axios';
-import { withRouter } from 'react-router'
+import logo from './../../assets/logo.png';
+import './Auth.css';
+import { connect } from 'react-redux';
+import { updateUser } from '../../redux/userReducer';
 
 
-function App(props) {
+function Auth(props) {
+  
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [errorMsg, setErrorMsg] = useState('')
 
-  const [toggle, setToggle] = useState(false)
-  const toggleMenu = () => {
-    setToggle(!toggle) 
-  }
-
-  const logout = () => {
-    axios.post('/api/auth/logout')
-      .then(_ => {
-        props.history.push('/')
+  function login() {
+    axios.post('/api/auth/login', {
+      username, password 
+    })
+      .then(res => {
+        props.updateUser(res.data)
+        props.history.push('/cart')
       })
-      .catch(err => console.log(err))
+      .catch(err => {
+        console.log(err)
+        setErrorMsg({ errorMsg: 'Incorrect username or password!' })
+      })
   }
 
+  function register() {
+    axios.post('/api/auth/register', { username, password })
+      .then(res => {
+        props.updateUser(res.data)
+        console.log(res.data)
+        props.history.push('/cart')
+      })
+      .catch(err => {
+        console.log(err)
+        setErrorMsg({ errorMsg: 'Username taken!' })
+      })
+  }
 
-  console.log(toggle)
-  return (
-    <div className="App">
-      <title>Etchit Pro</title>
-      <header className="body">
-        <link rel="stylesheet" href="/App.css"></link>
-        <meta className="viewport" content="width=device-width, initial-scale=1.0"/>
-        <nav className="navbar">
-          <div className="brand-title">Etchit Pro</div>
-          <div onClick={toggleMenu} className="toggle-button">
-            <span className="bar"></span>
-            <span className="bar"></span>
-            <span className="bar"></span>
+  function closeErrorMessage() {
+    setErrorMsg(false)
+    setUsername('')
+    setPassword('')
+  }
+
+    return (
+      <div className='auth'>
+        <div className='auth-container'>
+          <h1 className='auth-title'>
+            <img className='logo' src={logo} alt='logo' /></h1>
+          {errorMsg && <h3 className='auth-error-msg'>{errorMsg} <span onClick={closeErrorMessage}>X</span></h3>}
+          <div className='auth-input-box'>
+            <p>Username:</p>
+            <input value={username} onChange={e => setUsername(e.target.value)} />
           </div>
-          <div className= {toggle ? "navbar-links display" : "navbar-links"}>
-            <ul>
-              <Link to="/shop">
-              <li><a id="links">Shop</a></li>
-              </Link>
-              <Link to="/Contact">
-                <li><a id="links">Contact</a></li>
-              </Link>
-              <Link to="/home">
-                <li><a id="links">Home</a></li>
-              </Link>
-              <Link to="/" onClick={logout}>
-                <li><a id="links">Logout</a></li>
-              </Link>
-            </ul>
-          </div> 
-        </nav>
-
-      </header>
-
-      <main>
-        {Routes}
-      </main>
-      <footer class="footer"><p>2021 Etchit Pro | Karen Ellsworth</p></footer>
-    </div>
-  );
+          <div className='auth-input-box'>
+            <p>Password:</p>
+            <input value={password} type='password' onChange={e => setPassword(e.target.value)} />
+          </div>
+          <div className='auth-button-container'>
+            <button className='dark-button' onClick={login}> Login </button>
+            <button className='dark-button' onClick={register}> Register </button>
+          </div>
+        </div>
+      </div>
+    );
+  
 }
 
-export default withRouter(App);
+export default connect(null, { updateUser })(Auth);

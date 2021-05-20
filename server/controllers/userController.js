@@ -5,11 +5,11 @@ module.exports = {
     const db = req.app.get('db');
     console.log(req.body)
     const { username, password } = req.body;
-    const foundUser = await db.user.find_user_by_username({ username });
+    const foundUser = await db.users.find_user_by_username({ username });
     if (foundUser[0]) return res.status(409).send('Sorry, username already exists.');
     const salt = bcrypt.genSaltSync(15);
     const hash = bcrypt.hashSync(password, salt);
-    const newUser = await db.user.create_user({ username, hash });
+    const newUser = await db.users.create_user({ username, hash });
     req.session.user = newUser[0];
     res.status(200).send(req.session.user);
   },
@@ -17,7 +17,7 @@ module.exports = {
   login: async (req, res) => {
     const db = req.app.get('db');
     const { username, password } = req.body;
-    const foundUser = await db.user.find_user_by_username({ username });
+    const foundUser = await db.users.find_user_by_username({ username });
     if (!foundUser[0]) return res.status(409).send(`Sorry, username doesn't exists.`);
     const authenticated = bcrypt.compareSync(password, foundUser[0].password);
     if (authenticated) {

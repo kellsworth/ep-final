@@ -1,25 +1,19 @@
-CREATE TABLE invoice (
-  id SERIAL PRIMARY KEY,
-  cart_id INTEGER REFERENCES cart(id)
-);
+DROP TABLE IF EXISTS cart_items;
+DROP TABLE IF EXISTS invoice;
+DROP TABLE IF EXISTS products;
+DROP TABLE IF EXISTS cart;
+DROP TABLE IF EXISTS users;
 
-CREATE TABLE cart_items (
-  id SERIAL PRIMARY KEY(255),
-  user_id INTEGER REFERENCES users(id),
-  product_id INTEGER REFERENCES products(id),
-  quantity INTEGER,
-  cart_id INTEGER REFERENCES cart(id)
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(255),
+  password VARCHAR(500)
 );
 
 CREATE TABLE cart (
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users(id)
-);
-
-CREATE TABLE users (
-  id SERIAL PRIMARY KEY,
-  user_id VARCHAR(255),
-  password VARCHAR(255)
 );
 
 CREATE TABLE products (
@@ -30,3 +24,21 @@ CREATE TABLE products (
   image VARCHAR(255),
   inventory INTEGER
 );
+
+CREATE TABLE invoice (
+  id SERIAL PRIMARY KEY,
+  cart_id INTEGER REFERENCES cart(id)
+);
+
+CREATE TABLE cart_items (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id),
+  product_id INTEGER REFERENCES products(id),
+  quantity INTEGER,
+  cart_id INTEGER REFERENCES cart(id)
+);
+
+
+
+
+

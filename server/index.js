@@ -5,7 +5,7 @@ const massive = require('massive');
 const { SERVER_PORT, CONNECTION_STRING } = process.env;
 const session = require('express-session');
 const userCtrl = require('./controllers/userController');
-// const bucketCtrl = require('./controllers/bucketController');
+const cartCtrl = require('./controllers/cartController');
 const exphbs = require('express-handlebars')
 const path = require('path');
 const nodemailer = require('nodemailer');
@@ -37,10 +37,11 @@ app.post('/api/auth/logout', userCtrl.logout);
 app.post('/api/email', ctrl.email)
 
 // // Cart Endpoints
-// app.post('/api/
-// app.get('/api/
-// app.put('/api/
-// app.delete('/api
+app.post('/api/cart', cartCtrl.addToCart);
+app.get('/api/cart', cartCtrl.getCart);
+app.put('/api/cart/:orderId', cartCtrl.updateOrder);
+app.put('api/order', cartCtrl.deleteCart)
+app.delete('/api/cart', cartCtrl.clearCart);
 app.get('*', (req, res) => {
    res.sendFile(path.join(__dirname, '../build/index.html'))
 });
