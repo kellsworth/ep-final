@@ -4,12 +4,12 @@ let cartArr= [];
 module.exports = {
   addToCart: async (req, res) => {
     const { id } = req.session.user
-    const { cartInput } = req.body
+    const { productId, quantity } = req.body
     const db = req.app.get('db')
+    console.log(id, productId, quantity)
 
-    const newList = await db.cart.add_to_cart({ id, cartInput })
-    res.status(201).send(newList)
-    // need to change above response //
+    const newList = await db.cart.add_to_cart([id, productId, quantity])
+    res.status(200).send(newList)
   },
  
   getCart: async (req, res) => {
@@ -18,34 +18,37 @@ module.exports = {
     const db = req.app.get('db')
 
     const newCartList = await db.cart.get_cart(id)
-    res.status(201).send(newCartList)
+    res.status(200).send(newCartList)
   },
  
-    deleteCart: async (req, res) => {
+    deleteCartItem: async (req, res) => {
       const { id } = req.session.user
       console.log(id)
       const { itemId } = req.params
       const db = req.app.get('db')
 
-      const newList = await db.cart.delete_cart(itemId, id)
+      const newList = await db.cart.delete_cart([itemId, id])
       res.status(200).send(newList)
       
     },
 
-    updateOrder: (req, res) => {
-      const { orderId } = req.params;
-      const { name } = req.body;
-      cartArr.forEach((order, index) => {
-        if (+orderId === order.id) {
-          cartArr[index].nameInput = name;
-        }
-      })
-      res.sendStatus(200)
+    updateQuantity: async (req, res) => {
+      const { quantity } = req.body;
+      const { itemId } = req.params;
+      const { id } = req.session.user
+      const db = req.app.get('db')
+
+      const newList = await db.cart.update_quantity([quantity, itemId, id])
+      res.status(200).send(newList)
     },
   
-    clearCart: (req, res) => {
-      cartArr = []
-      res.sendStatus(200)
+    clearCart: async (req, res) => {
+      const { id } = req.session.user
+      const db = req.app.get('db')
+
+      const responseList = await db.cart.clear_cart([id])
+      console.log(responseList)
+      res.status(200).send(responseList)
     }
 } 
 

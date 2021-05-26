@@ -1,7 +1,6 @@
 DROP TABLE IF EXISTS cart_items;
 DROP TABLE IF EXISTS invoice;
 DROP TABLE IF EXISTS products;
-DROP TABLE IF EXISTS cart;
 DROP TABLE IF EXISTS users;
 
 
@@ -9,11 +8,6 @@ CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   username VARCHAR(255),
   password VARCHAR(500)
-);
-
-CREATE TABLE cart (
-  id SERIAL PRIMARY KEY,
-  user_id INTEGER REFERENCES users(id)
 );
 
 CREATE TABLE products (
@@ -34,8 +28,7 @@ CREATE TABLE cart_items (
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users(id),
   product_id INTEGER REFERENCES products(id),
-  quantity INTEGER,
-  cart_id INTEGER REFERENCES cart(id)
+  quantity INTEGER
 );
 
 

@@ -39,8 +39,8 @@ app.post('/api/email', ctrl.email)
 // // Cart Endpoints
 app.post('/api/cart', cartCtrl.addToCart);
 app.get('/api/cart', cartCtrl.getCart);
-app.put('/api/cart/:orderId', cartCtrl.updateOrder);
-app.put('api/order', cartCtrl.deleteCart)
+app.put('/api/cart/:itemId', cartCtrl.updateQuantity);
+app.delete('/api/cart/:itemId', cartCtrl.deleteCartItem)
 app.delete('/api/cart', cartCtrl.clearCart);
 app.get('*', (req, res) => {
    res.sendFile(path.join(__dirname, '../build/index.html'))
