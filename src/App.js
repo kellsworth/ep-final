@@ -43,16 +43,16 @@ function App(props) {
           <div className= {toggle ? "navbar-links display" : "navbar-links"}>
             <ul>
               <Link to="/shop">
-              <li><a id="links">Shop</a></li>
+              <li><p id="links">Shop</p></li>
               </Link>
               <Link to="/contact">
-                <li><a id="links">Contact</a></li>
+                <li><p id="links">Contact</p></li>
               </Link>
               <Link to="/home">
-                <li><a id="links">Home</a></li>
+                <li><p id="links">Home</p></li>
               </Link>
               <Link to="/" onClick={logout}>
-                <li><a id="links">Logout</a></li>
+                <li><p id="links">Logout</p></li>
               </Link>
             </ul>
           </div> 

@@ -10,6 +10,7 @@ const exphbs = require('express-handlebars')
 const path = require('path');
 const nodemailer = require('nodemailer');
 const ctrl = require('./controllers/emailController');
+const productsCtrl = require('./controllers/productsController');
 
 
 //View engine setup
@@ -35,6 +36,9 @@ app.post('/api/auth/register', userCtrl.register);
 app.post('/api/auth/login', userCtrl.login);
 app.post('/api/auth/logout', userCtrl.logout);
 app.post('/api/email', ctrl.email)
+
+// Products Endpoint //
+app.get('/api/products', productsCtrl.getAllProducts);
 
 // // Cart Endpoints
 app.post('/api/cart', cartCtrl.addToCart);
