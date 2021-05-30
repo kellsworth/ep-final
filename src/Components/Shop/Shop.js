@@ -1,8 +1,8 @@
+import '../../App.css';
 import './Shop.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-
-
+// import { logout } from '../../redux/userReducer';
 
 function Shop(props) {
 
@@ -15,25 +15,24 @@ function Shop(props) {
   },[])
 
   const mappedProducts = products.map(product => {
-    return <div key={product.id}>
-    <img src={`../../assets/product_pics/glass.jpeg`} alt={product.image}/>
+    return <div className="product-item" key={product.id}>
+
     {/* <img src={`../../assets/product_pics/${product.image}.jpeg`} alt={product.image}/> */}
+    <img src={`/src/assets/product_pics/${product.image}.jpeg`} alt={product.image}/>
     <p>{product.product_name}</p>
     <p>{product.material}</p>
     <p>{product.price}</p>
-    <button></button>
+    <button>Add to Cart</button>
     </div>
   })
 
 
   return (
-    <div>
-      <header>
-
-      </header>
-      <div>{mappedProducts}</div>
-    </div>
-
+    <body>
+      <div>
+        <div className="product-container">{mappedProducts}</div>
+      </div>
+    </body>
   )
 
 

@@ -2,7 +2,8 @@
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
-  font-family: "Nunito", sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .App {
@@ -14,8 +15,13 @@ body {
   margin: 0;
   padding: 0;
 }
+
 a {
   text-decoration: none;
+}
+
+button {
+  background-color: blueviolet;
 }
 
 .navbar {
@@ -23,7 +29,7 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: transparent;
+  background-color: white;
   font-size: calc(1px + 2vmin);
   color: rgb(5, 5, 5);
 }

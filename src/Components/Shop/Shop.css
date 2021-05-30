@@ -1,0 +1,16 @@
+body {
+  background-color: #ddbea9;
+}
+
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  /* background-color: rgb(177, 198, 235); */
+}
+
+.product-item {
+  padding: 15px;
+  width: 50%;
+  text-align: center;
+}

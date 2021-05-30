@@ -46,8 +46,6 @@ function Auth(props) {
 
     return (
       <div className='auth'>
-        {/* <h1 className='auth-title'>
-            <img className='logo' src={etchitpro_trans} width="100" height="100" alt='etchitpro_trans' /></h1> */}
         <div className='auth-container'>
           {errorMsg && <h3 className='auth-error-msg'>{errorMsg} <span onClick={closeErrorMessage}>X</span></h3>}
           <div className='auth-input-box'>

@@ -32,9 +32,9 @@ function App(props) {
         <link rel="stylesheet" href="/App.css"></link>
         <meta className="viewport" content="width=device-width, initial-scale=1.0"/>
         <nav className="navbar">
-          <div className="brand-title">Etchit Pro</div>
+          {/* <div className="brand-title">Etchit Pro</div> */}
             <h1 className='logo'>
-              <img className='logo' src={etchitpro_logo} width="250" height="120" alt='etchitpro_logo' /></h1>
+              <a href="/"><img className='logo' src={etchitpro_logo} width="250" height="120" alt='etchitpro_logo' /></a></h1>
           <div onClick={toggleMenu} className="toggle-button">
             <span className="bar"></span>
             <span className="bar"></span>
@@ -48,8 +48,8 @@ function App(props) {
               <Link to="/contact">
                 <li><p id="links">Contact</p></li>
               </Link>
-              <Link to="/home">
-                <li><p id="links">Home</p></li>
+              <Link to="/cart">
+                <li><p id="links">Cart</p></li>
               </Link>
               <Link to="/" onClick={logout}>
                 <li><p id="links">Logout</p></li>

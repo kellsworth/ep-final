@@ -85,7 +85,7 @@ const styles = {
     width:200,
     height:45,
     borderRadius:10,
-    background:'lavender',
+    background:'purple',
     fontSize:35,
     fontWeight:'bold',
     letterSpacing:'0.07em'

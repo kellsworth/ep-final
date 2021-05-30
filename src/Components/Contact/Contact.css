@@ -5,12 +5,15 @@
 
   /* Background styles */
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("https://source.unsplash.com/collections/9861386/1200x900");
+    url("https://source.unsplash.com/collection/11409073/1200x900");
   height: calc(100vh - 0px);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 @media (max-width: 400px) {
@@ -21,10 +24,10 @@
     font-size: 2em;
   }
 
-  div.form {
+  /* div.form {
     width: 100vw;
     background-image: none;
     box-shadow: none;
     font-size: 0.5em;
-  }
+  } */
 }
