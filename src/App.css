@@ -21,7 +21,11 @@ a {
 }
 
 button {
-  background-color: blueviolet;
+  background-color: rgb(223, 200, 243);
+}
+
+button:hover {
+  border-color: rgb(238, 102, 60);
 }
 
 .navbar {
