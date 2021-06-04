@@ -14,6 +14,8 @@ function Shop(props) {
     })
   },[])
 
+  
+
   const mappedProducts = products.map(product => {
     return <div className="product-item" key={product.id}>
 
