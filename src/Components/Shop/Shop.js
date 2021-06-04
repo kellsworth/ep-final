@@ -17,7 +17,6 @@ function Shop(props) {
   const mappedProducts = products.map(product => {
     return <div className="product-item" key={product.id}>
 
-    {/* <img src={`../../assets/product_pics/${product.image}.jpeg`} alt={product.image}/> */}
     <img src={`/src/assets/product_pics/${product.image}.jpeg`} alt={product.image}/>
     <p>{product.product_name}</p>
     <p>{product.material}</p>

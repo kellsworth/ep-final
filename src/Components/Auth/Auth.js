@@ -17,7 +17,7 @@ function Auth(props) {
     })
       .then(res => {
         props.updateUser(res.data)
-        props.history.push('/cart')
+        props.history.push('/shop')
       })
       .catch(err => {
         console.log(err)
@@ -30,7 +30,7 @@ function Auth(props) {
       .then(res => {
         props.updateUser(res.data)
         console.log(res.data)
-        props.history.push('/cart')
+        props.history.push('/shop')
       })
       .catch(err => {
         console.log(err)

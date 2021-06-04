@@ -4,7 +4,7 @@ import './Nav.css';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { updateUser, logout } from '../../redux/reducer';
-// import { getUser } from '../../../server/controllers/userController';
+
 
 
 function Nav(props) {
